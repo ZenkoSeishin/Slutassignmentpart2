@@ -37,7 +37,6 @@ public class Login {
 
                 case 1:
                     GetName(myObj);
-                    hej = false;
                     break;
                 case 2:
                     SetName(myObj);
@@ -108,21 +107,23 @@ public class Login {
         }
     }
 
-    public static void GetName(File myObj){
+    public void GetName(File myObj){
         System.out.println("What is your name?");
         Scanner scanner = new Scanner(System.in);
         String text = scanner.nextLine();
         while(!isLetter(text)){
             System.out.print("Invalid input, please enter text containing 3 letters or more: ");
             text = scanner.nextLine();
-            boolean match = isMatch(myObj,text);
-            if (match == true){
-                System.out.println("Välkommen"+ text);
-                break;
-            }else{
-                System.out.println("Du finns inte med i systemet!");
-            }
         }
+            boolean match = isMatch(myObj,text);
+            if (match){
+                System.out.println("Välkommen");
+                hej = false;
+            }  else{
+                System.out.println("Du finns inte med i systemet!");
+                hej = true;
+            }
+
 
     }
 }
